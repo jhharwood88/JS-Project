@@ -1,13 +1,6 @@
 <% if !params[:category].blank? %>
   <% @items = Item.where(category: params[:category]) %>
 <% end %>
-<div>
-  <h3>Filter Items:</h3>
-  <%= form_tag("/items", method: "get") do %>
-    <%= select_tag "category", options_from_collection_for_select(Item.all.to_a.uniq{ |c| c.category }, "category", "category"), include_blank: true %>
-    <%= submit_tag "Filter" %>
-  <% end %>
-</div>
 
 <% @items.each do |item| %></br>
 	<p>Name:<%=item.name%></p>
@@ -16,6 +9,9 @@
 	<%= link_to "Edit #{item.name}", edit_item_path(item.id), method: "get"%></br>
 	<%= link_to "Delete #{item.name}", item_path(item.id), method: "DELETE"%></br></br>
 <% end %>
+
+<button id="click-me">This button listens for clicks</button>
+<div id="our-new-item"></div>
 
 <%= link_to "Create a New Item", new_item_path, method: "get"%></br>
 <%= link_to "Return to Lists", user_lists_path, method: "get"%>
