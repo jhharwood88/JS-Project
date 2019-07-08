@@ -4,6 +4,17 @@ class ItemsController < ApplicationController
 
 	def index
 		@items = Item.all
+		respond_to do |f|
+			f.html {render :index}
+			f.json {render json: @items}
+		end
+	end
+
+	def show
+		respond_to do |f|
+			f.html {render :show}
+			f.json {render json: @item}
+		end
 	end
 
 	def new
@@ -14,9 +25,11 @@ class ItemsController < ApplicationController
 		@item = Item.new(item_params)
 
 		if @item.save
-			redirect_to items_path
+			respond_to do |f|
+				f.html {redirect_to items_path}
+				f.json {render json: @item}
+			end
 		else
-			
 			render :new
 		end
 	end
@@ -28,15 +41,22 @@ class ItemsController < ApplicationController
 	def update
 		
 		find_item_id
-		@item.update(params.require(:item).permit(:name, :category, :price))
-	  redirect_to items_path
+		@item.update(item_params)
+		respond_to do |f|
+				f.html {redirect_to items_path}
+				f.json {render json: @item}
+		end
+	  # redirect_to items_path
 	end
 
 	def destroy
 		find_item_id
 		if @item
 			@item.destroy
-			redirect_to items_path
+			respond_to do |f|
+				f.html {redirect_to items_path}
+				f.json {head :no_content}
+			end
 		end
 	end
 
