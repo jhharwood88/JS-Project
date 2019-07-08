@@ -1,0 +1,19 @@
+<center><h1><%= @list.name.upcase %></h1></center>
+
+<% @list.items.each do |item| %>
+<center><p><%=item.name%></p></center>
+<%end%>
+
+<center><%= link_to "Add a New Item", new_item_list_path, method: "get"%></
+
+<!-- 
+1. print out all the items on the item_list that is associated with this list *using collection select*
+
+2. link to each respective item, giving the user an option to delete from their item_list
+
+3. allow the user to edit the quantity of the items in their list, or remove the item from their list entirely
+
+
+ -->
+
+<center><%= link_to "Return to Lists", user_lists_path, method: "get"%></center>

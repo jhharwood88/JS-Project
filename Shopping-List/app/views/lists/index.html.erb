@@ -1,0 +1,7 @@
+<% @current_user_list.each do |list|%>
+	<center><%= link_to "#{list.name.upcase}", user_list_path(list), method: "get"%></center></br>
+<%end%>
+
+<center><%= link_to "Create a new Shopping List", new_user_list_path, method: "get"%></center></br>
+
+<center><%= link_to "List of all Items", items_path, method: "get"%></center></br>

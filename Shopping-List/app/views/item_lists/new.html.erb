@@ -1,0 +1,31 @@
+<% if @item_list.errors %>
+  <%  @item_list.errors.full_messages.each do |error| %>
+    <h4><%= error %></h4>
+  <%end%>
+<%end%>
+<%= form_for @item_list do |f| %>
+  </br>
+  <%= f.label "Quantity" %></br>
+  <%= f.text_field :quantity %>
+  </br>
+  <%= f.label "List Id" %></br>
+  <%= f.text_field :list_id %>
+  </br>
+  <%= f.label "Item Id" %></br>
+  <%= f.text_field :item_id %>
+  </br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Return to Lists", user_lists_path, method: "get"%>
+<br>
+<h1>LISTS</h1>
+<% @lists.each do |item| %>
+  <p>Id:<%=item.id%></p>
+  <p>Name:<%=item.name%></p><br>
+<% end %>
+<br>
+<h1>ITEMS</h1>
+<% @items.each do |item| %>
+  <p>Id:<%=item.id%></p>
+  <p>Name:<%=item.name%></p><br>
+<% end %>
