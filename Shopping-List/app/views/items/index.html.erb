@@ -2,16 +2,10 @@
   <% @items = Item.where(category: params[:category]) %>
 <% end %>
 
-<% @items.each do |item| %></br>
-	<p>Name:<%=item.name%></p>
-	<p>Category:<%=item.category%></p>
-	<p>Price: $<%=item.price%>0</p>
-	<%= link_to "Edit #{item.name}", edit_item_path(item.id), method: "get"%></br>
-	<%= link_to "Delete #{item.name}", item_path(item.id), method: "DELETE"%></br></br>
-<% end %>
-
-<button id="click-me">This button listens for clicks</button>
 <div id="our-new-item"></div>
+
+<div id="our-show-item"></div>
+
 
 <%= link_to "Create a New Item", new_item_path, method: "get"%></br>
 <%= link_to "Return to Lists", user_lists_path, method: "get"%>

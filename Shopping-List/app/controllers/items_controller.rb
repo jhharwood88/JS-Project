@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
+		find_item_id
 		respond_to do |f|
 			f.html {render :show}
 			f.json {render json: @item}
