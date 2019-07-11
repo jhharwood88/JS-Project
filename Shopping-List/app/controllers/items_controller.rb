@@ -27,6 +27,10 @@ class ItemsController < ApplicationController
 
 		if @item.save
 			render json: @item
+			# respond_to do |f|
+			# 	f.html {redirect_to items_path}
+			# 	f.json {render json: @item}
+			# end
 		else
 			render :new
 		end
