@@ -41,9 +41,21 @@ function getItems(){
 			let myItemHTML = item.formatShow()
 			console.log(myItemHTML)
 			document.getElementById('our-show-item').innerHTML += myItemHTML
+			})
 			
 		})
-			
+	})
+
+	$('#new_item').on('submit', function(e){
+		e.preventDefault()
+
+		const values = $(this).serialize()
+
+		$.post('/items', values).done(function(data){
+			$('#app-container').html('')
+			const newItem = new Item(data)
+			const htmlToAdd = newItem.formatShow()
+			$('#app-container').html(htmlToAdd)
 		})
 	})
 }
