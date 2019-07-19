@@ -40,6 +40,7 @@ function getItems(){
 			let item = new Item(data)
 			let myItemHTML = item.formatShow()
 			console.log(myItemHTML)
+			document.getElementById('our-show-item').innerHTML = ""
 			document.getElementById('our-show-item').innerHTML += myItemHTML
 			})
 			
@@ -88,3 +89,20 @@ Item.prototype.formatShow = function() {
 		</div>
 		`)
 }
+
+function scopey() { 
+	var a = "first Value" 
+	let b = "first Value" 
+	const c = "first Value" 
+	d = "first Value" 
+	if (true) {
+	 var a = "second Value" 
+	 let b = "second Value" 
+	 const c = "second Value" 
+	 d = "second Value" 
+	} 
+	console.log(a) 
+	console.log(b) 
+	console.log(c) 
+	console.log(d) 
+} 
